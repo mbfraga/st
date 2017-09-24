@@ -20,6 +20,21 @@ static char shell[] = "/bin/sh";
 static char *utmp = NULL;
 static char stty_args[] = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
+static char *openurlcmd[] = { "/bin/sh", "-c",
+      "xurls \
+         | tac \
+         | dmenu -l 10 -fn 'DejaVu Sans Mono-10' -p 'url:' -w $1 \
+         | xargs -r firefox",
+      "externalpipe", winid, NULL };
+
+static char *copyurlcmd[] = { "/bin/sh", "-c",
+      "xurls \
+         | tac \
+         | dmenu -l 10 -fn 'DejaVu Sans Mono-10' -p 'url:' -w $1 \
+         | xclip -i -selection clipboard",
+      "externalpipe", winid, NULL };
+
+
 /* identification sequence returned in DA and DECID */
 static char vtiden[] = "\033[?6c";
 
@@ -184,6 +199,8 @@ Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
+	{ TERMMOD,              XK_U,  externalpipe,   {.v = openurlcmd } },
+	{ TERMMOD,              XK_J,  externalpipe,   {.v = copyurlcmd } },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
