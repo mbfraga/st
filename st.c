@@ -61,6 +61,7 @@ char *argv0;
 
 /* constants */
 #define ISO14755CMD		"dmenu -w %lu -p codepoint: </dev/null"
+#define SPECCHARCMD		"listspecchars | dmenu -w %lu -l 10 -p 'special character':"
 
 enum cursor_movement {
 	CURSOR_SAVE,
@@ -141,6 +142,7 @@ static void iso14755(const Arg *);
 static void toggleprinter(const Arg *);
 static void sendbreak(const Arg *);
 static void externalpipe(const Arg *);
+static void specchar(const Arg *);
 
 /* config.h for applying patches and the configuration. */
 #include "config.h"
@@ -2455,6 +2457,52 @@ externalpipe(const Arg *arg)
 	close(to[1]);
 	/* restore */
 	signal(SIGPIPE, oldsigpipe);
+}
+
+void
+specchar(const Arg *arg)
+{
+	unsigned long id = xwinid();
+	char cmd[sizeof(SPECCHARCMD) + NUMMAXLEN(id)];
+	FILE *p;
+   const char s[2] = ":";
+	char *us, specstring[100], *token, *end;
+
+	snprintf(cmd, sizeof(cmd), SPECCHARCMD, id);
+	if (!(p = popen(cmd, "r")))
+		return;
+
+	us = fgets(specstring, sizeof(specstring), p);
+
+	pclose(p);
+
+	if (!us || *us == '\0' || *us == '\n' || strlen(us) > 98 || strlen(us) < 2)
+		return;
+   /* clean trailing whitespace */
+   end = us + strlen(us) -1;
+   while(end > us && isspace((unsigned char)*end)) end--;
+   *(end+1) = 0;
+
+   fprintf(stderr, "token1:  |%s|\n", us);
+   fprintf(stderr, "token1:  |%li|\n", strlen(us));
+
+	if (!us || *us == '\0' || *us == '\n' || strlen(us) > 98 || strlen(us) < 2)
+		return;
+
+   fprintf(stderr, "d1:  |%s|\n", us);
+   /* use the second token */
+   token = strtok(us, s); 
+   token = strtok(NULL, s);
+
+   /* clean whitespace */
+   while(isspace((unsigned char)*token)) token++;
+   if (*token == 0)
+      return;
+   end = token + strlen(token) -1;
+   while(end > token && isspace((unsigned char)*end)) end--;
+   *(end+1) = 0;
+
+	ttysend(token, strlen(token));
 }
 
 void

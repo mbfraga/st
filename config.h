@@ -199,6 +199,7 @@ Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
+	{ TERMMOD,              XK_S,           specchar,       {.i =  0} },
 	{ TERMMOD,              XK_U,  externalpipe,   {.v = openurlcmd } },
 	{ TERMMOD,              XK_J,  externalpipe,   {.v = copyurlcmd } },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
