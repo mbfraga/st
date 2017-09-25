@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-char font[] = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-int borderpx = 2;
+char font[] = "DejaVu Sans Mono:pixelsize=14:antialias=true:autohint=true";
+int borderpx = 3;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -39,15 +39,16 @@ static char *copyurlcmd[] = { "/bin/sh", "-c",
 static char vtiden[] = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-float cwscale = 1.0;
-float chscale = 1.0;
+float cwscale = 0.9;
+float chscale = 0.9;
 
 /*
  * word delimiter string
  *
  * More advanced example: " `'\"()[]{}"
  */
-static char worddelimiters[] = " ";
+// static char worddelimiters[] = " ";
+static char worddelimiters[] = " `'\"()[]{}<>";
 
 /* selection timeouts (in milliseconds) */
 unsigned int doubleclicktimeout = 300;
@@ -100,30 +101,33 @@ static unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+   "#191a1d",
+   "#f3b2ab",
+   "#bad260",
+   "#eac58d",
+   "#c6e5f8",
+   "#e4c6ed",
+   "#c6f3e6",
+   "#5a6373",
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+   "#333841",
+   "#ea4439",
+   "#50763d",
+   "#fab81d",
+   "#446fa6",
+   "#84678f",
+   "#4f7b6c",
+   "#f4efe3",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
+   "#ff0000",
+   "#ffffff",
+   "#ff0000",
 };
 
 
@@ -131,10 +135,10 @@ const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 7;
+unsigned int defaultfg = 15;
 unsigned int defaultbg = 0;
-unsigned int defaultcs = 256;
-unsigned int defaultrcs = 257;
+unsigned int defaultcs = 15;
+unsigned int defaultrcs = 0;
 
 /*
  * Default shape of cursor
