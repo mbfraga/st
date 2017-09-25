@@ -34,13 +34,12 @@ static char *copyurlcmd[] = { "/bin/sh", "-c",
          | xclip -i -selection clipboard",
       "externalpipe", winid, NULL };
 
-
 /* identification sequence returned in DA and DECID */
 static char vtiden[] = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
 float cwscale = 0.9;
-float chscale = 0.9;
+float chscale = 1;
 
 /*
  * word delimiter string
@@ -195,7 +194,9 @@ Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
+	{ TERMMOD,              XK_plus,        zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
+	{ TERMMOD,              XK_underscore,  zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
