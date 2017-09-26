@@ -38,7 +38,7 @@ static char *copyurlcmd[] = { "/bin/sh", "-c",
 static char vtiden[] = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-float cwscale = 0.9;
+float cwscale = 1;
 float chscale = 1;
 
 /*
@@ -493,5 +493,5 @@ uint selmasks[] = {
 char ascii_printable[] =
 	" !\"#$%&'()*+,-./0123456789:;<=>?"
 	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
-	"`abcdefghijklmnopqrstuvwxyz{|}~";
+	"`abcdefghijklmnopqrstuvwxyz{|}~💩漢字";
 
