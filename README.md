@@ -33,86 +33,35 @@ bold colors from the 8-15 colors. This allows you to combine any of the first
 
 Below I will share my most important configurations (`config.h`).
 
-```C
-char font[] = "DejaVu Sans Mono:pixelsize=14:antialias=true:autohint=true, Noto
-Sans Kannada:pixelsize=14;antialias=true;autohint=true, Noto Emoji:style=Regular:pixelsize=26:antialias=true:hinting=true";
-int borderpx = 3;
+New commands:
+   * **openurlcmd** -- search for urls in screen, show via dmenu, and open
+                   selection in firefox.
 
-// Show urls in dmenu and open selection
-static char *openurlcmd[] = { "/bin/sh", "-c",
-      "xurls \
-         | tac \
-         | dmenu -l 10 -fn 'DejaVu Sans Mono-10' -p 'url:' -w $1 \
-         | xargs -r firefox",
-      "externalpipe", winid, NULL };
+   * **copyurlcmd** -- same as **openurlcmd**, but send url to clipboard
 
-// Show urls in dmenu and yank selection
-static char *copyurlcmd[] = { "/bin/sh", "-c",
-      "xurls \
-         | tac \
-         | dmenu -l 10 -fn 'DejaVu Sans Mono-10' -p 'url:' -w $1 \
-         | xclip -i -selection clipboard",
-      "externalpipe", winid, NULL };
+   * specchar -- run **listspecchars** command (see below) and show list of
+                 special characters in dmenu. Insert selection to the terminal
+                 cursor.
 
-// Fix kerning.
-float cwscale = 0.9;
+New bindings:
+   * **Shift-PageUp**       -- scroll up.
+   * **Shift-PageDown**     -- scroll down.
+   * **Ctrl-Shift-u**       -- run openurlcmd().
+   * **Ctrl-Shift-j**       -- run copyurlcmd().
+   * **Ctrl-Shift-s**       -- run specchar().
+   * **Ctrl-Shift-minus**   -- decrease font size. 
+   * **Ctrl-Shift-plus**    -- increase font size.
+   * **Ctrl-Shift-0**       -- reset to default font size.
 
-// Add word delimiters
-static char worddelimiters[] = " `'\"()[]{}<>";
-
-//colors
-const char *colorname[] = {
-	/* 8 normal colors */
-   "#191a1d",
-   "#f3b2ab",
-   "#bad260",
-   "#eac58d",
-   "#c6e5f8",
-   "#e4c6ed",
-   "#c6f3e6",
-   "#5a6373",
-
-	/* 8 bright colors */
-   "#333841",
-   "#ea4439",
-   "#50763d",
-   "#fab81d",
-   "#446fa6",
-   "#84678f",
-   "#4f7b6c",
-   "#f4efe3",
-
-   [255] = 0,
-};
-
-unsigned int defaultfg = 15;
-unsigned int defaultbg = 0;
-unsigned int defaultcs = 15;
-unsigned int defaultrcs = 0;
-
-
-Shortcut shortcuts[] = {
-...
-	{ TERMMOD,              XK_plus,        zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_underscore,  zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
-	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
-	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
-	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
-	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
-	{ TERMMOD,              XK_S,           specchar,       {.i =  0} },
-	{ TERMMOD,              XK_U,  externalpipe,   {.v = openurlcmd } },
-	{ TERMMOD,              XK_J,  externalpipe,   {.v = copyurlcmd } },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-
-...
-};
+Expanded word delimiters to:
+```
+" `'\"()[]{}<>"
 ```
 
+Colors are left as default on config.def.h. However, config.h has my personal
+theme. It's a weird one unless you use my dotfiles :P.
+
+ascii_printable is changed to handle wide characters.
 
 ## Requirements
 

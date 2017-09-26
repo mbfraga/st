@@ -2483,14 +2483,9 @@ specchar(const Arg *arg)
    while(end > us && isspace((unsigned char)*end)) end--;
    *(end+1) = 0;
 
-   fprintf(stderr, "token1:  |%s|\n", us);
-   fprintf(stderr, "token1:  |%li|\n", strlen(us));
-
 	if (!us || *us == '\0' || *us == '\n' || strlen(us) > 98 || strlen(us) < 2)
 		return;
 
-   fprintf(stderr, "d1:  |%s|\n", us);
-   /* use the second token */
    token = strtok(us, s); 
    token = strtok(NULL, s);
 
