@@ -101,12 +101,22 @@ degrees            : °
 
 ## Installation
 
-Edit config.mk to match your local setup (st is installed into
-the /usr/local namespace by default).
+1. Clone repository `git clone https://github.com/mbfraga/st`
 
-```bash
-tic -sx st.info
-```
+2. Checkout 'mine' branch `git checkout mine`
+
+2. Edit config.mk to match your local setup (optional).
+
+3. Compile and install
+   ```bash
+   I use the following commands to install st:
+   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+   make PREFIX=/usr TERMINFO="$pkgdir/usr/share/terminfo" install
+   install -Dm644 LICENSE "/usr/share/licenses/st/LICENSE"
+   install -Dm644 LICENSE "/usr/share/doc/st/README"
+
+   tic -sx st.info
+   ```
 
 
 
