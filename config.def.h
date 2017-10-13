@@ -34,7 +34,6 @@ static char *copyurlcmd[] = { "/bin/sh", "-c",
          | xclip -i -selection clipboard",
       "externalpipe", winid, NULL };
 
-
 /* identification sequence returned in DA and DECID */
 static char vtiden[] = "\033[?6c";
 
@@ -492,5 +491,5 @@ uint selmasks[] = {
 char ascii_printable[] =
    " !\"#$%&'()*+,-./0123456789:;<=>?"
    "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
-   "`abcdefghijklmnopqrstuvwxyz{|}~💩漢字";
+   "`abcdefghijklmnopqrstuvwxyz{|}~😨💩漢字∰";
 
