@@ -40,8 +40,11 @@ git apply st-no_bold_colors-20170623-b331da5.diff && _ok || _exit
 
 
 
-printf "Setting CC to cc"
+echo "Setting CC to cc."
 sed -i "s|# CC = c99|CC = cc|" config.mk
+
+echo "Applying my own config."
+cp myconfig.def.h config.def.h
 
 
 #EOF
