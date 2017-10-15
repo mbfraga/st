@@ -8,16 +8,26 @@ with my own customization.
    clipboard. Not exactly the same as the __clipboard__ patch, which seems to
    raise errors for me.
 
-**scrollback** - All three patches in ![patches/scrollback](https://st.suckless.org/patches/scrollback/) were applied.
+**scrollback** - First two ![patches/scrollback](https://st.suckless.org/patches/scrollback/) were applied.
 
    - Scroll back using Shift+{PageUp, PageDown}
    - Scroll back using Shift+MouseWheel
-   - Scroll using just Mousewheel
 
-**spoiler** - Patch in 
-   ![patches/spoiler](https://st.suckless.org/patches/spoiler/) was applied. Use inverted default bg/fg colors for selection when bg/fg are the same. THis allows you to see the spoiler.
+**scrollback altscreen** - This is my own patch `st-scrollback-generic_altscreen-20171015-0ac685f.diff`.
+      It doesn't scrollback when in an altscreen like tmux and
+      vim. These applications have their own scrollback
+      systems, and it makes no sense to do a terminal
+      scrollback. (apply after the first scrollback patch above)
 
-**externalpipe** - Patch in ![patches/externalpipe](https://st.suckless.org/patches/externalpipe/) was applied. This allows reaing and writing st's screen through a pipe.
+**spoiler** - Patch in
+      ![patches/spoiler](https://st.suckless.org/patches/spoiler/) was applied. Use
+      inverted default bg/fg colors for selection when bg/fg are the same. THis
+      allows you to see the spoiler.
+
+**externalpipe** - Patch in
+      ![patches/externalpipe](https://st.suckless.org/patches/externalpipe/) was
+      applied. This allows reading and writing st's screen through a pipe.
+      This enables having some useful scripts (url opening)
 
 **specchar** - My own implementation which spawns a dmenu with special
 characters/strings and inserts the selection. An alternative/complement to
@@ -46,8 +56,9 @@ New commands:
 New bindings:
    * **Shift-PageUp**       -- scroll up.
    * **Shift-PageDown**     -- scroll down.
+   * **Ctrl-Shift-k**       -- scroll up.
+   * **Ctrl-Shift-j**       -- scroll down.
    * **Ctrl-Shift-u**       -- run openurlcmd().
-   * **Ctrl-Shift-j**       -- run copyurlcmd().
    * **Ctrl-Shift-s**       -- run specchar().
    * **Ctrl-Shift-minus**   -- decrease font size. 
    * **Ctrl-Shift-plus**    -- increase font size.
@@ -57,9 +68,6 @@ Expanded word delimiters to:
 ```
 " `'\"()[]{}<>"
 ```
-
-Colors are left as default on config.def.h. However, config.h has my personal
-theme. It's a weird one unless you use my dotfiles :P.
 
 ascii_printable is changed to handle wide characters.
 

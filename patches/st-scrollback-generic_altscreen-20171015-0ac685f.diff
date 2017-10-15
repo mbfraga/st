@@ -1,0 +1,55 @@
+diff --git a/st.c b/st.c
+index 4b83200..9f45c81 100644
+--- a/st.c
++++ b/st.c
+@@ -1074,16 +1074,18 @@ kscrolldown(const Arg* a)
+ {
+ 	int n = a->i;
+ 
+-	if (n < 0)
+-		n = term.row + n;
++	if (!IS_SET(MODE_ALTSCREEN)) {
++		if (n < 0)
++			n = term.row + n;
+ 
+-	if (n > term.scr)
+-		n = term.scr;
++		if (n > term.scr)
++			n = term.scr;
+ 
+-	if (term.scr > 0) {
+-		term.scr -= n;
+-		selscroll(0, -n);
+-		tfulldirt();
++		if (term.scr > 0) {
++			term.scr -= n;
++			selscroll(0, -n);
++			tfulldirt();
++		}
+ 	}
+ }
+ 
+@@ -1092,14 +1094,16 @@ kscrollup(const Arg* a)
+ {
+ 	int n = a->i;
+ 
+-	if (n < 0)
+-		n = term.row + n;
++	if (!IS_SET(MODE_ALTSCREEN)) {
++		if (n < 0)
++			n = term.row + n;
+ 
+-	if (term.scr <= HISTSIZE-n) {
+-		term.scr += n;
+-		selscroll(0, n);
+-		tfulldirt();
+-	}
++		if (term.scr <= HISTSIZE-n) {
++			term.scr += n;
++			selscroll(0, n);
++			tfulldirt();
++		}
++   }
+ }
+ 
+ void
