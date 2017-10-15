@@ -211,7 +211,7 @@ Shortcut shortcuts[] = {
    { TERMMOD,              XK_parenright,  zoomreset,      {.f =  0} },
    { TERMMOD,              XK_S,           specchar,       {.i =  0} },
    { TERMMOD,              XK_O,  externalpipe,   {.v = openurlcmd } },
-   //{ TERMMOD,              XK_Y,  externalpipe,   {.v = copyurlcmd } },
+   //{ TERMMOD,              XK_J,  externalpipe,   {.v = copyurlcmd } },
 };
 
 /*
