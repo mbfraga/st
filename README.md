@@ -8,16 +8,17 @@ with my own customization.
    clipboard. Not exactly the same as the __clipboard__ patch, which seems to
    raise errors for me.
 
-**scrollback** - First two ![patches/scrollback](https://st.suckless.org/patches/scrollback/) were applied.
+**scrollback** - First all three ![patches/scrollback](https://st.suckless.org/patches/scrollback/) were applied.
 
    - Scroll back using Shift+{PageUp, PageDown}
    - Scroll back using Shift+MouseWheel
+   - Scroll back using just MouseWheel (still requires second patch)
 
 **scrollback altscreen** - This is my own patch `st-scrollback-generic_altscreen-20171015-0ac685f.diff`.
       It doesn't scrollback when in an altscreen like tmux and
       vim. These applications have their own scrollback
       systems, and it makes no sense to do a terminal
-      scrollback. (apply after the first scrollback patch above)
+      scrollback. (apply after the first scrollback patch above).
 
 **spoiler** - Patch in
       ![patches/spoiler](https://st.suckless.org/patches/spoiler/) was applied. Use
