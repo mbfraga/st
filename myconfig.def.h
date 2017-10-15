@@ -202,8 +202,8 @@ Shortcut shortcuts[] = {
    /* customized */
    { ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
    { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-   { TERMMOD,              XK_J,           kscrollup,      {.i = -1} },
-   { TERMMOD,              XK_K,           kscrolldown,    {.i = -1} },
+   { TERMMOD,              XK_K,           kscrollup,      {.i = -1} },
+   { TERMMOD,              XK_J,           kscrolldown,    {.i = -1} },
    { TERMMOD,              XK_plus,        zoom,           {.f = +1} },
    { TERMMOD,              XK_underscore,  zoom,           {.f = -1} },
    { TERMMOD,              XK_parenright,  zoomreset,      {.f =  0} },

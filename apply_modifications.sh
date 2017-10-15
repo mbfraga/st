@@ -24,7 +24,7 @@ printf "Applying scrollback-mouse patch..."
 git apply st-scrollback-mouse-20170427-5a10aca.diff && _ok || _exit
 
 printf "Applying scrollback generic altscreen..."
-git apply st-scrollback-mouse-20171015-0ac685f.diff && _ok || _exit
+git apply st-scrollback-generic_altscreen-20171015-0ac685f.diff && _ok || _exit
 
 printf "Applying spoiler patch..."
 git apply st-spoiler-20170802-e2ee5ee.diff && _ok || _exit
