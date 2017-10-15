@@ -204,12 +204,14 @@ Shortcut shortcuts[] = {
    { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
    { TERMMOD,              XK_K,           kscrollup,       {.i = 1} },
    { TERMMOD,              XK_J,           kscrolldown,     {.i = 1} },
+   { TERMMOD,              XK_U,           kscrollup,       {.i = -1} },
+   { TERMMOD,              XK_D,           kscrolldown,     {.i = -1} },
    { TERMMOD,              XK_plus,        zoom,           {.f = +1} },
    { TERMMOD,              XK_underscore,  zoom,           {.f = -1} },
    { TERMMOD,              XK_parenright,  zoomreset,      {.f =  0} },
    { TERMMOD,              XK_S,           specchar,       {.i =  0} },
-   { TERMMOD,              XK_U,  externalpipe,   {.v = openurlcmd } },
-   //{ TERMMOD,              XK_J,  externalpipe,   {.v = copyurlcmd } },
+   { TERMMOD,              XK_O,  externalpipe,   {.v = openurlcmd } },
+   //{ TERMMOD,              XK_Y,  externalpipe,   {.v = copyurlcmd } },
 };
 
 /*
