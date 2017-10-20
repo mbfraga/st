@@ -24,7 +24,7 @@ static char *openurlcmd[] = { "/bin/sh", "-c",
       "xurls \
          | tac \
          | dmenu -l 10 -fn 'DejaVu Sans Mono-10' -p 'url:' -w $1 \
-         | xargs -r firefox",
+         | xargs -r $BROWSER",
       "externalpipe", winid, NULL };
 
 static char *copyurlcmd[] = { "/bin/sh", "-c",
