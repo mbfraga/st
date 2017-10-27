@@ -5,10 +5,9 @@ with my own customization.
 ## Modifications
 
 **clipboard** - selecting will be sent to the primary selection and the
-   clipboard. Not exactly the same as the __clipboard__ patch, which seems to
-   raise errors for me.
+   clipboard. See [patches/clipboard](https://st.suckless.org/patches/clipboard/).
 
-**scrollback** - First all three ![patches/scrollback](https://st.suckless.org/patches/scrollback/) were applied.
+**scrollback** - All three [patches/scrollback](https://st.suckless.org/patches/scrollback/) were applied.
 
    - Scroll back using Shift+{PageUp, PageDown}
    - Scroll back using Shift+MouseWheel
@@ -21,12 +20,12 @@ with my own customization.
       scrollback. (apply after the first scrollback patch above).
 
 **spoiler** - Patch in
-      ![patches/spoiler](https://st.suckless.org/patches/spoiler/) was applied. Use
+      [patches/spoiler](https://st.suckless.org/patches/spoiler/) was applied. Use
       inverted default bg/fg colors for selection when bg/fg are the same. THis
       allows you to see the spoiler.
 
 **externalpipe** - Patch in
-      ![patches/externalpipe](https://st.suckless.org/patches/externalpipe/) was
+      [patches/externalpipe](https://st.suckless.org/patches/externalpipe/) was
       applied. This allows reading and writing st's screen through a pipe.
       This enables having some useful scripts (url opening)
 
@@ -35,7 +34,7 @@ characters/strings and inserts the selection. An alternative/complement to
 things like xcompose.
 
 **noboldcolors** - Patch in
-![patches/solarized](https://st.suckless.org/patches/solarized/) called
+[patches/solarized](https://st.suckless.org/patches/solarized/) called
 `st-no_bold_colors-20170623-b331da5.diff` was applied. This makes separates
 bold colors from the 8-15 colors. This allows you to combine any of the first
 16 colors with normal/bold types.
@@ -55,11 +54,13 @@ New commands:
                  cursor.
 
 New bindings:
-   * **Shift-PageUp**       -- scroll up.
-   * **Shift-PageDown**     -- scroll down.
-   * **Ctrl-Shift-k**       -- scroll up.
-   * **Ctrl-Shift-j**       -- scroll down.
-   * **Ctrl-Shift-u**       -- run openurlcmd().
+   * **Shift-PageUp**       -- scroll up one page.
+   * **Shift-PageDown**     -- scroll down one page.
+   * **Ctrl-Shift-u**       -- scroll up one page.
+   * **Ctrl-Shift-d**       -- scroll down one page.
+   * **Ctrl-Shift-k**       -- scroll up one line.
+   * **Ctrl-Shift-j**       -- scroll down one line.
+   * **Ctrl-Shift-o**       -- run openurlcmd().
    * **Ctrl-Shift-s**       -- run specchar().
    * **Ctrl-Shift-minus**   -- decrease font size. 
    * **Ctrl-Shift-plus**    -- increase font size.
@@ -112,19 +113,19 @@ degrees            : °
 
 1. Clone repository, `git clone https://github.com/mbfraga/st`
 
-2. Checkout 'mine' branch, `git checkout mine`
+2. Checkout 'mine' branch, `git checkout upstream`
 
-2. Edit config.mk to match your local setup (optional).
+3. Apply modifications `./apply_modifications.sh`
 
-3. Compile and install
+4. Edit config.mk to match your local setup (optional).
+
+5. Compile and install
    ```bash
    I use the following commands to install st:
    make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
    make PREFIX=/usr TERMINFO="$pkgdir/usr/share/terminfo" install
    install -Dm644 LICENSE "/usr/share/licenses/st/LICENSE"
    install -Dm644 LICENSE "/usr/share/doc/st/README"
-
-   tic -sx st.info
    ```
 
 
