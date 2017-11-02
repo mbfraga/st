@@ -120,6 +120,13 @@ const char *colorname[] = {
    [15] = "#f4efe3",
 
    [255] = 0,
+   /* orange */
+   [166] = "#ed8712",
+   /* backgrounds*/
+   [234] = "#02060d",
+   [235] = "#191a1d",
+   [236] = "#222326",
+
 
 
    /* more colors can be added after 255 to use with DefaultXX */
