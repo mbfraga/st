@@ -41,6 +41,8 @@ git apply st-specchar-20170113-0ac685f.diff && _ok || _exit
 printf "Applying no_bold_colors patch..."
 git apply st-no_bold_colors-20170623-b331da5.diff && _ok || _exit
 
+printf "Apply 255 colors fix patch..."
+git apply st-255colors-20171102-0ac685f.diff && _ok || _exit
 
 
 echo "Setting CC to cc."
